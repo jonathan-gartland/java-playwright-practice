@@ -2,6 +2,8 @@ import com.microsoft.playwright.*;
 import org.testng.annotations.Test;
 
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.logging.Logger;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 import static java.util.Arrays.asList;
@@ -24,7 +26,7 @@ public class NewTestngClass {
                     .setHasTouch(true)
                     .setLocale("en-US")
                     .setGeolocation(41.889938, 12.492507)
-                    .setPermissions(asList("geolocation")));
+                    .setPermissions(List.of("geolocation")));
             context.tracing().start(new Tracing.StartOptions().setScreenshots(true).setSnapshots(true));
             Page page = context.newPage();
             page.navigate("https://www.openstreetmap.org/");
@@ -39,6 +41,8 @@ public class NewTestngClass {
             context.tracing().stop(new Tracing.StopOptions().setPath(Paths.get("trace.zip")));
             // page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("colosseum-pixel2.png")));
         }
+        catch (Exception e) {
+            Logger.getGlobal().severe(e.getMessage());
+        }
     }
-
 }  
