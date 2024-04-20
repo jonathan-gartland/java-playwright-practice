@@ -45,7 +45,7 @@ public class NewTestngClass {
             userDiaryLink.click();
             Locator titleH1 = page.locator("#content > div.content-heading.bg-body-secondary.border-bottom.border-secondary-subtle > div > div > div > h1");
             assertThat(titleH1).containsText("Users' Diaries");
-            assertThat(page).hasTitle("Users' Diaries | OpenStreetMap");
+            assertThat(page).hasTitle("Users' Diaries | OpenStreetMaps");
             // assertThat(page.url()).isEqualTo("https://www.openstreetmap.org/diary");
             page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("colosseum-pixel2.png")));
         }
