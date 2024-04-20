@@ -3,8 +3,8 @@
 <suite name="All Test Suite">
     <test verbose="2" preserve-order="true" name="/Users/jgartland/Projects/Java/java-playwright-practice">
         <classes>
-            <class name="NewTestngClass" />
-            <class name="WdioTestngClass" />
+            <class name="NewTestCase" />
+            <class name="WdioTestCase" />
         </classes>
     </test>
 </suite>

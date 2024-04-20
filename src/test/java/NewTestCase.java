@@ -6,9 +6,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static java.util.Arrays.asList;
 
-public class NewTestngClass {
+public class NewTestCase {
 
     @Test
     public void testCase1() {
