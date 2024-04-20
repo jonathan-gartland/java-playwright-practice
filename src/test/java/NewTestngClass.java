@@ -25,6 +25,7 @@ public class NewTestngClass {
                     .setLocale("en-US")
                     .setGeolocation(41.889938, 12.492507)
                     .setPermissions(asList("geolocation")));
+            context.tracing().start(new Tracing.StartOptions().setScreenshots(true).setSnapshots(true));
             Page page = context.newPage();
             page.navigate("https://www.openstreetmap.org/");
             Locator closePopup = page.locator("#sidebar > div.welcome.p-3 > div:nth-child(1) > div > button");
@@ -35,7 +36,8 @@ public class NewTestngClass {
             assertThat(titleH1).containsText("Users' Diaries");
             assertThat(page).hasTitle("Users' Diaries | OpenStreetMap");
             assertThat(page).hasURL("https://www.openstreetmap.org/diary");
-            page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("colosseum-pixel2.png")));
+            context.tracing().stop(new Tracing.StopOptions().setPath(Paths.get("trace.zip")));
+            // page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("colosseum-pixel2.png")));
         }
     }
 
