@@ -19,13 +19,14 @@ public class NewTestCase {
     @Test
     public void testPlaywright() {
         try (Playwright playwright = Playwright.create()) {
+            BrowserContext context;
             Browser browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(true));
-            BrowserContext context = browser.newContext(new Browser.NewContextOptions()
-                    .setIsMobile(true)
-                    .setHasTouch(true)
-                    .setLocale("en-US")
-                    .setGeolocation(41.889938, 12.492507)
-                    .setPermissions(List.of("geolocation")));
+                context = browser.newContext(new Browser.NewContextOptions()
+                        .setIsMobile(true)
+                        .setHasTouch(true)
+                        .setLocale("en-US")
+                        .setGeolocation(41.889938, 12.492507)
+                        .setPermissions(List.of("geolocation")));
             context.tracing().start(new Tracing.StartOptions().setScreenshots(true).setSnapshots(true));
             Page page = context.newPage();
             page.navigate("https://www.openstreetmap.org/");
@@ -39,9 +40,6 @@ public class NewTestCase {
             assertThat(page).hasURL("https://www.openstreetmap.org/diary");
             context.tracing().stop(new Tracing.StopOptions().setPath(Paths.get("trace.zip")));
             // page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get("colosseum-pixel2.png")));
-        }
-        catch (Exception e) {
-            Logger.getGlobal().severe(e.getMessage());
         }
     }
 }  

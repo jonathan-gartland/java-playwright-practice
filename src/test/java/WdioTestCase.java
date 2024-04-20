@@ -1,10 +1,6 @@
-import com.microsoft.playwright.*;
 import org.testng.annotations.Test;
 
-import java.nio.file.Paths;
-
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-import static java.util.Arrays.asList;
 
 public class WdioTestCase {
     @Test
