@@ -4,6 +4,7 @@
     <test verbose="2" preserve-order="true" name="/Users/jgartland/Projects/Java/java-playwright-practice">
         <classes>
             <class name="NewTestngClass" />
+            <class name="WdioTestngClass" />
         </classes>
     </test>
 </suite>
