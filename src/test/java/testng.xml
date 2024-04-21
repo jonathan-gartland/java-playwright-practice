@@ -4,7 +4,7 @@
     <test verbose="2" preserve-order="true" name="/Users/jgartland/Projects/Java/java-playwright-practice">
         <classes>
             <class name="NewTestCase" />
-            <class name="WdioTestCase" />
+            <class name="MpnLookupTestCase" />
         </classes>
     </test>
 </suite>
