@@ -3,7 +3,7 @@ import org.testng.annotations.*;
 
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.logging.Logger;
+// import java.util.logging.Logger;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -18,7 +18,7 @@ public class NewTestCase {
     @BeforeClass
     void launchBrowser() {
         playwright = Playwright.create();
-        browser = playwright.chromium().launch();
+        browser = playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
     }
 
     @AfterClass
@@ -38,12 +38,6 @@ public class NewTestCase {
     }
 
     @Test
-    public void testCase1() {
-        System.out.println("in test case 1 of NewTestCase");
-        assert 1 == 1;
-    }
-
-    @Test
     public void testPlaywright() {
         context = browser.newContext(new Browser.NewContextOptions().setIsMobile(true)
                 .setHasTouch(true).setLocale("en-US").setGeolocation(41.889938, 12.492507)
@@ -51,11 +45,11 @@ public class NewTestCase {
             context.tracing().start(new Tracing.StartOptions().setScreenshots(true).setSnapshots(true));
             page = context.newPage();
             page.navigate("https://www.openstreetmap.org/");
-            Locator closePopup = page.locator("#sidebar > div.welcome.p-3 > div:nth-child(1) > div > button");
-            closePopup.click();
-            Locator userDiaryLink = page.locator("body > header > nav.secondary > ul > li:nth-child(2) > a");
+//            Locator closePopup = page.locator("button:aria-label(\"Close\")");
+//            closePopup.click();
+            Locator userDiaryLink = page.locator("a.nav-link:has-text(\"User Diaries\")");
             userDiaryLink.click();
-            Locator titleH1 = page.locator("#content > div.content-heading.bg-body-secondary.border-bottom.border-secondary-subtle > div > div > div > h1");
+            Locator titleH1 = page.locator("h1:has-text(\"Users' Diaries\")");
             assertThat(titleH1).containsText("Users' Diaries");
             assertThat(page).hasTitle("Users' Diaries | OpenStreetMap");
             assertThat(page).hasURL("https://www.openstreetmap.org/diary");
