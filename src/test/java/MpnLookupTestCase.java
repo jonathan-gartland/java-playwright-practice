@@ -33,7 +33,7 @@ public class MpnLookupTestCase {
     void createContextAndPage() {
         context = browser.newContext();
         page = context.newPage();
-        page.navigate("http://66.175.214.146:3000");
+        page.navigate("http://localhost:3000");
     }
 
     @AfterMethod
@@ -52,7 +52,7 @@ public class MpnLookupTestCase {
         Locator qtInfoLink = page.getByTestId("qtlink");
         qtInfoLink.click();
         page.waitForURL("**/quanti-tray-system/", new Page.WaitForURLOptions().setTimeout(5000));
-        Locator qtInfoHeader = page.locator("#page-top > div.page-content > div > div:nth-child(1) > div:nth-child(2) > h1");
+        Locator qtInfoHeader = page.locator("text=Take the guesswork out of bacterial counts");
         assertThat(qtInfoHeader).isVisible();
         page.goBack(new Page.GoBackOptions().setTimeout(5000));
         assertThat(qtInfoLink).isVisible();
@@ -63,7 +63,7 @@ public class MpnLookupTestCase {
         Locator mpnGeneratorLink = page.getByTestId("mpngen");
         mpnGeneratorLink.click();
         page.waitForURL("**/mpn-generator/", new Page.WaitForURLOptions().setTimeout(5000));
-        Locator mpnGeneratorHeader = page.locator("#page-top > div.page-content > div > div:nth-child(1) > div:nth-child(2) > h1");
+        Locator mpnGeneratorHeader = page.locator("text=MPN Generator MPN Generator Software");
         assertThat(mpnGeneratorHeader).isVisible();
         page.goBack(new Page.GoBackOptions().setTimeout(5000));
         assertTrue(mpnGeneratorLink.isVisible());
