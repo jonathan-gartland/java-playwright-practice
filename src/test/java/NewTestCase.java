@@ -39,7 +39,7 @@ public class NewTestCase {
 
     @Test
     public void testPlaywright() {
-        context = browser.newContext(new Browser.NewContextOptions().setIsMobile(true)
+        context = browser.newContext(new Browser.NewContextOptions().setIsMobile(false)
                 .setHasTouch(true).setLocale("en-US").setGeolocation(41.889938, 12.492507)
                 .setPermissions(List.of("geolocation")));
             context.tracing().start(new Tracing.StartOptions().setScreenshots(true).setSnapshots(true));
