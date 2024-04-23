@@ -33,7 +33,7 @@ public class MpnLookupTestCase {
     void createContextAndPage() {
         context = browser.newContext();
         page = context.newPage();
-        page.navigate("http://localhost:3000");
+        page.navigate("http://66.175.214.146:3000");
     }
 
     @AfterMethod
